@@ -1,6 +1,7 @@
 /__pycache__
 /__pypackages__
 /src/api
+/src/manage.py
 /**/__pycache__
 /**/**/__pycache__
 db.sqlite3
