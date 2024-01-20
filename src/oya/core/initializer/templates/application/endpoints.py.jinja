@@ -1,0 +1,7 @@
+from litestar import get
+
+@get("/{{snake_case_name}}")
+async def index() -> dict:
+    return {"message": "Hello world from {{camel_case_name}} !"}
+
+__handlers__ = [index]

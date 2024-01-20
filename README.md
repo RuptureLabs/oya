@@ -1,2 +1,2 @@
 # oya
-A thin functionnal layer over litestar and tortoise-orm
+The thin functional layer above Litestar for DX, inspireb by the best of django

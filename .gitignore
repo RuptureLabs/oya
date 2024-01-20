@@ -1,0 +1,6 @@
+/__pycache__
+/__pypackages__
+/src/api
+/**/__pycache__
+/**/**/__pycache__
+db.sqlite3

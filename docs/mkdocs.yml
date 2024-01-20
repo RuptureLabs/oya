@@ -1,0 +1,24 @@
+site_name: Oya documentation
+
+theme:
+  name: mkdocs
+  locale: en
+  analytics: {gtag: 'G-274394082'}
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - python
+
+nav:
+  - Home : index.md
+  - 'Usage Guide' : 
+    - 'Get Started' : usage.md
+    - 'Static Files' : static.md
+    - 'Templates' : templates.md
+    - 'Models & Fields' : models.md
+    - Serialization : serialization.md
+    - Tests : tests.md
+    - 'Security' : config.md
+  - About : about.md
+
+copyright: Copyright &copy; 2023 <a href="https://oyabytes.com/">OyaBytes</a>.

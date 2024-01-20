@@ -1,0 +1,32 @@
+[project]
+name = "oya"
+version = "0.1.0"
+description = "Small functional layer above Litestar"
+authors = [
+    {name = "Edimedia Mutoke", email = "eddycondor07@gmail.com"},
+]
+dependencies = [
+    "tortoise-orm>=0.20.0",
+    "litestar[standard]>=2.4.1",
+    "pydantic>=2.5.2",
+    "dictdiffer>=0.9.0",
+    "ptpython>=3.0.23",
+    "typing-extensions>=4.8.0",
+    "typeguard>=4.1.5",
+    "black>=23.12.0",
+    "mkdocs>=1.5.3",
+]
+requires-python = ">=3.9"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm.scripts]
+start = "src/manage.py runserver"
+manage = "src/manage.py "
+
+[project.scripts]
+oya = "oya.core.initializer.starter:main"
