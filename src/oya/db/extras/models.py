@@ -7,6 +7,7 @@ from tortoise import (
 from tortoise.signals import pre_delete, post_save, Signals
 from tortoise.backends.base.client import BaseDBAsyncClient
 from tortoise.indexes import Index
+from tortoise.expressions import Subquery
 from oya.db.utils import CustomListener
 
 
@@ -192,16 +193,10 @@ class ClosureModel(models.Model, metaclass=ClosureModelMeta):
 
     async def _closure_deletelink(self, oldparentpk):
         """Remove incorrect links from the closure tree"""
-        try:
-            filt = await self._closure_model.filter(
-                **{
-                    "parent__%s__parent_id" % self._closure_childref() : oldparentpk,
-                    "child__%s__child_id" % self._closure_parentref() : self.pk
-                }
-            )
-            filt.delete()
-        except Exception as e:
-            print(e, '------')
+        
+        await self._closure_model.filter(pk__in=Subquery(self._closure_model.filter(
+            parent__pk=oldparentpk,
+        ).exclude(child__pk=oldparentpk).values('id'))).delete()
 
 
 

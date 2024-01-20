@@ -58,7 +58,6 @@ class Command(BaseCommand):
 
     def handle(self, *test_labels, **options):
         TestRunner = get_runner(settings, options["testrunner"])
-        print(os.curdir, '---')
 
         time_keeper = TimeKeeper() if options.get("timing", False) else NullTimeKeeper()
         
