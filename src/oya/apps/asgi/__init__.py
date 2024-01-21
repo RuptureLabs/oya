@@ -30,6 +30,7 @@ from litestar import Litestar
 
 from oya.core.exceptions import ImproperlyConfigured
 from oya.core.management.utils import close_tortoise, init_tortoise_auto
+from oya.core.serialization import TortoiseSerializationPlugin
 from oya.conf import settings
 from oya.apps import apps
 from oya.middleware.builtins import (
@@ -57,7 +58,7 @@ class Application:
     """
 
     asgi_application : "Litestar" = None
-    plugins: List[Any] = []
+    plugins: List[Any] = [TortoiseSerializationPlugin()]
     middlewares: List[Any] = []
     dependencies: dict[str, Any] = {}
 

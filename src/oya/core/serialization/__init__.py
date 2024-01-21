@@ -5,7 +5,7 @@ from litestar.dto import AbstractDTO
 from litestar.plugins import SerializationPluginProtocol
 from litestar.typing import FieldDefinition
 from oya.core.dto import TortoiseDTO
-from tortoise.models import Model
+from tortoise.models import Model, QuerySet
 
 
 __all__ = ["TortoiseSerializationPlugin"]
@@ -20,9 +20,9 @@ class TortoiseSerializationPlugin(SerializationPluginProtocol):
         self._type_dto_map: dict[type[Model], TortoiseDTO[Any]] = {}
         
     def supports_type(self, field_definition: FieldDefinition) -> bool:
-        return (
-            field_definition.is_collection and field_definition.has_inner_subclass_of(Model)
+        return (field_definition.is_collection and field_definition.has_inner_subclass_of(Model)
         ) or field_definition.is_subclass_of(Model)
+        
     
     def create_dto_for_type(self, field_definition: FieldDefinition) -> type[AbstractDTO]:
         annotation = next(
