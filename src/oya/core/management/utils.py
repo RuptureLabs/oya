@@ -68,6 +68,10 @@ async def init_tortoise(tortoise_config):
     await Tortoise.init(tortoise_config)
 
 
+async def init_tortoise_auto():
+    await init_tortoise(settings.TORTOISE_ORM)
+
+
 async def close_tortoise():
     await Tortoise.close_connections()
 

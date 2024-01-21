@@ -29,6 +29,7 @@ from litestar import Litestar
 
 
 from oya.core.exceptions import ImproperlyConfigured
+from oya.core.management.utils import close_tortoise, init_tortoise_auto
 from oya.conf import settings
 from oya.apps import apps
 from oya.middleware.builtins import (
@@ -61,8 +62,8 @@ class Application:
     dependencies: dict[str, Any] = {}
 
     on_app_init: List[Callable[[Any], Any]] = []
-    on_startup: List[Callable[[Any], Any]] = []
-    on_shutdown: List[Callable[[Any], Any]] = []
+    on_startup: List[Callable[[Any], Any]] = [init_tortoise_auto]   # default
+    on_shutdown: List[Callable[[Any], Any]] = [close_tortoise]      # default
 
     route_handlers: List[Callable[[Any], Any]] = []
 
