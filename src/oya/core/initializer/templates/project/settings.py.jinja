@@ -29,7 +29,7 @@ MIDDLEWARE_FROM_FACTORY_BEFORE = False
 ROOT_URLCONF = 'api.urls'
 
 
-ASGI_APPLICATION = '{{project_name}}.main:application'
+ASGI_APPLICATION = '{{camel_case_name}}.main:application'
 
 
 
@@ -119,7 +119,7 @@ UVICORN_LOG_LEVEL = 'info'
 
 ########## ------------------------------- OYA ------------------------------------ ##########
 OYA_VERSION = '0.0.1'
-APP_NAME = "{{ project_name }}"
+APP_NAME = "{{ camel_case_name }}"
 
 
 ####### -------------------------------- ALLOWED HOSTS CONFIG --------------------- #########
