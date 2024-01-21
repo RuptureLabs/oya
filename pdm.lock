@@ -2,7 +2,7 @@
 # It is not intended for manual editing.
 
 [metadata]
-groups = ["default"]
+groups = ["default", "pt"]
 strategy = ["cross_platform"]
 lock_version = "4.4"
 content_hash = "sha256:b1d4e8b00436d49f04c1c73191d97424fa0681fa1b107274e43c6771e0e355a5"
@@ -846,18 +846,18 @@ files = [
 
 [[package]]
 name = "ptpython"
-version = "3.0.23"
+version = "3.0.25"
 requires_python = ">=3.7"
 summary = "Python REPL build on top of prompt_toolkit"
 dependencies = [
     "appdirs",
     "jedi>=0.16.0",
-    "prompt-toolkit<3.1.0,>=3.0.28",
+    "prompt-toolkit<3.1.0,>=3.0.34",
     "pygments",
 ]
 files = [
-    {file = "ptpython-3.0.23-py2.py3-none-any.whl", hash = "sha256:51069503684169b21e1980734a9ba2e104643b7e6a50d3ca0e5669ea70d9e21c"},
-    {file = "ptpython-3.0.23.tar.gz", hash = "sha256:9fc9bec2cc51bc4000c1224d8c56241ce8a406b3d49ec8dc266f78cd3cd04ba4"},
+    {file = "ptpython-3.0.25-py2.py3-none-any.whl", hash = "sha256:16654143dea960dcefb9d6e69af5f92f01c7a783dd28ff99e78bc7449fba805c"},
+    {file = "ptpython-3.0.25.tar.gz", hash = "sha256:887f0a91a576bc26585a0dcec41cd03f004ac7c46a2c88576c87fc51d6c06cd7"},
 ]
 
 [[package]]
