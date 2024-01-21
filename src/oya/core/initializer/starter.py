@@ -254,7 +254,7 @@ def main():
     try:
         sys.argv.insert(1, 'oya')           # necessary ?
         Command().run_from_argv(sys.argv)   # yes, to avoid IndexError from create_parser
-    except CommandError as exc:
+    except Exception as exc:
         print(f'[*_*] {exc}')
 
 
