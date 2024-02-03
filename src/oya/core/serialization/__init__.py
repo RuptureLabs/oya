@@ -5,7 +5,7 @@ from litestar.dto import AbstractDTO
 from litestar.plugins import SerializationPluginProtocol
 from litestar.typing import FieldDefinition
 from oya.core.dto import TortoiseDTO
-from tortoise.models import Model, QuerySet
+from tortoise.models import Model
 
 
 __all__ = ["TortoiseSerializationPlugin"]
@@ -40,5 +40,3 @@ class TortoiseSerializationPlugin(SerializationPluginProtocol):
         self._type_dto_map[annotation] = dto_type = TortoiseDTO[annotation]
 
         return dto_type
-    
-        
