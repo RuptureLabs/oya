@@ -21,6 +21,8 @@ from tortoise.fields import Field
 from tortoise import fields
 from tortoise.models import Model, QuerySet
 
+from oya.utils.module_loading import get_model
+
 
 T = TypeVar("T", bound=Model)
 
@@ -90,12 +92,17 @@ def prepare_query_for_dto(queryset: QuerySet | Model, exclude: list[str]=[]) -> 
 
 
 def _parse_toirtoise_type(field: Field, extra: dict[str, Any]) -> FieldDefinition:
-    if isinstance(field, (tortoise.fields.relational.ForeignKeyFieldInstance,)):
-        from oya.apps import apps
-
+    if isinstance(field, (tortoise.fields.relational.ForeignKeyFieldInstance,)) or \
+        isinstance(field, (tortoise.fields.relational.OneToOneFieldInstance,)):
         _app, model_name = field.model_name.split('.')
-        related_model = apps.get_model(app_label=_app, model_name=model_name)
+        related_model = get_model(app_label=_app, model_name=model_name)
         field_type = related_model
+        meta = Meta(extra=extra)
+
+    elif isinstance(field, (tortoise.fields.relational.ManyToManyFieldInstance,)):
+        _app, model_name = field.model_name.split('.')
+        related_model = get_model(app_label=_app, model_name=model_name)
+        field_type = list[related_model]
         meta = Meta(extra=extra)
 
     elif isinstance(field, (fields.IntField, fields.SmallIntField)):

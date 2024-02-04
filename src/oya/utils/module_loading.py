@@ -105,3 +105,10 @@ def module_dir(module):
         if filename is not None:
             return os.path.dirname(filename)
     raise ValueError("Cannot determine directory containing %s" % module)
+
+
+def get_model(model_name:str, app_label:str):
+    """
+    Load model by names
+    """
+    return import_string(f"{app_label}.models.{model_name}")
